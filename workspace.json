@@ -34,9 +34,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/next:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "root": "apps/web-next",
             "outputPath": "dist/apps/web-next"
@@ -66,9 +64,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/web-next"
-          ],
+          "outputs": ["coverage/apps/web-next"],
           "options": {
             "jestConfig": "apps/web-next/jest.config.js",
             "passWithNoTests": true
@@ -77,9 +73,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/web-next/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["apps/web-next/**/*.{ts,tsx,js,jsx}"]
           }
         }
       }
@@ -105,9 +99,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/web-next-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/web-next-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -119,9 +111,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/desktop-react",
             "index": "apps/desktop-react/src/index.html",
@@ -132,11 +122,9 @@
               "apps/desktop-react/src/favicon.ico",
               "apps/desktop-react/src/assets"
             ],
-            "styles": [
-              "apps/desktop-react/src/styles.css"
-            ],
+            "styles": ["apps/desktop-react/src/styles.css"],
             "scripts": [],
-            "webpackConfig": "@nrwl/react/plugins/webpack"
+            "webpackConfig": "apps/desktop-react/webpack.config.js"
           },
           "configurations": {
             "production": {
@@ -177,16 +165,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/desktop-react/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["apps/desktop-react/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/desktop-react"
-          ],
+          "outputs": ["coverage/apps/desktop-react"],
           "options": {
             "jestConfig": "apps/desktop-react/jest.config.js",
             "passWithNoTests": true
@@ -215,9 +199,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/desktop-react-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/desktop-react-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -246,9 +228,7 @@
         },
         "bundle-ios": {
           "executor": "@nrwl/react-native:bundle",
-          "outputs": [
-            "apps/phone-react-native/build"
-          ],
+          "outputs": ["apps/phone-react-native/build"],
           "options": {
             "entryFile": "apps/phone-react-native/src/main.tsx",
             "platform": "ios",
@@ -278,9 +258,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/phone-react-native/**/*.{js,ts,tsx}"
-            ]
+            "lintFilePatterns": ["apps/phone-react-native/**/*.{js,ts,tsx}"]
           }
         },
         "sync-deps": {
@@ -289,9 +267,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/phone-react-native"
-          ],
+          "outputs": ["coverage/apps/phone-react-native"],
           "options": {
             "jestConfig": "apps/phone-react-native/jest.config.js",
             "passWithNoTests": true
@@ -311,9 +287,7 @@
             "outputPath": "dist/apps/desktop-electron",
             "main": "apps/desktop-electron/src/main.ts",
             "tsConfig": "apps/desktop-electron/tsconfig.app.json",
-            "assets": [
-              "apps/desktop-electron/src/assets"
-            ]
+            "assets": ["apps/desktop-electron/src/assets"]
           },
           "configurations": {
             "production": {
@@ -355,18 +329,35 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/desktop-electron/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/desktop-electron/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/desktop-electron"
-          ],
+          "outputs": ["coverage/apps/desktop-electron"],
           "options": {
             "jestConfig": "apps/desktop-electron/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "components": {
+      "root": "libs/components",
+      "sourceRoot": "libs/components/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/components/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/components"],
+          "options": {
+            "jestConfig": "libs/components/jest.config.js",
             "passWithNoTests": true
           }
         }

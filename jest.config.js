@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/apps/desktop-react',
     '<rootDir>/apps/phone-react-native',
     '<rootDir>/apps/desktop-electron',
+    '<rootDir>/libs/components',
   ],
 };
