@@ -7,7 +7,16 @@
   "generators": {
     "@nrwl/react": {
       "application": {
+        "style": "css",
+        "linter": "eslint",
         "babel": true
+      },
+      "component": {
+        "style": "css"
+      },
+      "library": {
+        "style": "css",
+        "linter": "eslint"
       }
     },
     "@nrwl/next": {
@@ -25,7 +34,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/next:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "root": "apps/web-next",
             "outputPath": "dist/apps/web-next"
@@ -55,7 +66,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/web-next"],
+          "outputs": [
+            "coverage/apps/web-next"
+          ],
           "options": {
             "jestConfig": "apps/web-next/jest.config.js",
             "passWithNoTests": true
@@ -64,7 +77,9 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/web-next/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/web-next/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         }
       }
@@ -90,7 +105,269 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/web-next-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/web-next-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
+    "desktop-react": {
+      "root": "apps/desktop-react",
+      "sourceRoot": "apps/desktop-react/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/desktop-react",
+            "index": "apps/desktop-react/src/index.html",
+            "main": "apps/desktop-react/src/main.tsx",
+            "polyfills": "apps/desktop-react/src/polyfills.ts",
+            "tsConfig": "apps/desktop-react/tsconfig.app.json",
+            "assets": [
+              "apps/desktop-react/src/favicon.ico",
+              "apps/desktop-react/src/assets"
+            ],
+            "styles": [
+              "apps/desktop-react/src/styles.css"
+            ],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/desktop-react/src/environments/environment.ts",
+                  "with": "apps/desktop-react/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "desktop-react:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "desktop-react:build:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/desktop-react/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/desktop-react"
+          ],
+          "options": {
+            "jestConfig": "apps/desktop-react/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "desktop-react-e2e": {
+      "root": "apps/desktop-react-e2e",
+      "sourceRoot": "apps/desktop-react-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/desktop-react-e2e/cypress.json",
+            "tsConfig": "apps/desktop-react-e2e/tsconfig.e2e.json",
+            "devServerTarget": "desktop-react:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "desktop-react:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/desktop-react-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    },
+    "phone-react-native": {
+      "root": "apps/phone-react-native",
+      "sourceRoot": "apps/phone-react-native/src",
+      "projectType": "application",
+      "generators": {},
+      "targets": {
+        "start": {
+          "executor": "@nrwl/react-native:start",
+          "options": {
+            "port": 8081
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "nx start phone-react-native"
+          }
+        },
+        "run-ios": {
+          "executor": "@nrwl/react-native:run-ios",
+          "options": {}
+        },
+        "bundle-ios": {
+          "executor": "@nrwl/react-native:bundle",
+          "outputs": [
+            "apps/phone-react-native/build"
+          ],
+          "options": {
+            "entryFile": "apps/phone-react-native/src/main.tsx",
+            "platform": "ios",
+            "bundleOutput": "dist/apps/phone-react-native/ios/main.bundle"
+          }
+        },
+        "run-android": {
+          "executor": "@nrwl/react-native:run-android",
+          "options": {}
+        },
+        "build-android": {
+          "executor": "@nrwl/react-native:build-android",
+          "outputs": [
+            "apps/phone-react-native/android/app/build/outputs/bundle",
+            "apps/phone-react-native/android/app/build/outputs/apk"
+          ],
+          "options": {}
+        },
+        "bundle-android": {
+          "executor": "@nrwl/react-native:bundle",
+          "options": {
+            "entryFile": "apps/phone-react-native/src/main.tsx",
+            "platform": "android",
+            "bundleOutput": "dist/apps/phone-react-native/android/main.bundle"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/phone-react-native/**/*.{js,ts,tsx}"
+            ]
+          }
+        },
+        "sync-deps": {
+          "executor": "@nrwl/react-native:sync-deps",
+          "options": {}
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/phone-react-native"
+          ],
+          "options": {
+            "jestConfig": "apps/phone-react-native/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "desktop-electron": {
+      "root": "apps/desktop-electron",
+      "sourceRoot": "apps/desktop-electron/src",
+      "projectType": "application",
+      "prefix": "desktop-electron",
+      "targets": {
+        "build": {
+          "executor": "nx-electron:build",
+          "options": {
+            "outputPath": "dist/apps/desktop-electron",
+            "main": "apps/desktop-electron/src/main.ts",
+            "tsConfig": "apps/desktop-electron/tsconfig.app.json",
+            "assets": [
+              "apps/desktop-electron/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/desktop-electron/src/environments/environment.ts",
+                  "with": "apps/desktop-electron/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "nx-electron:execute",
+          "options": {
+            "buildTarget": "desktop-electron:build"
+          }
+        },
+        "package": {
+          "executor": "nx-electron:package",
+          "options": {
+            "name": "desktop-electron",
+            "frontendProject": "desktop-react",
+            "outputPath": "dist/packages",
+            "prepackageOnly": true
+          }
+        },
+        "make": {
+          "executor": "nx-electron:make",
+          "options": {
+            "name": "desktop-electron",
+            "frontendProject": "desktop-react",
+            "outputPath": "dist/executables"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/desktop-electron/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/desktop-electron"
+          ],
+          "options": {
+            "jestConfig": "apps/desktop-electron/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
