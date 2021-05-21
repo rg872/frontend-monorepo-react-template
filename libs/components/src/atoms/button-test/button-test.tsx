@@ -1,16 +1,16 @@
 import React from 'react';
-
 //import './button-test.module.css';
-
-import { View, Button } from 'react-native';
+import { Button, View } from 'react-native';
 
 /* eslint-disable-next-line */
-export interface ButtonTestProps {}
+export interface ButtonTestProps {
+  title: string;
+}
 
 export function ButtonTest(props: ButtonTestProps) {
   return (
     <View>
-      <Button title="Press me please" onPress={() => {}} />
+      <Button title={props.title} onPress={() => {}} />
     </View>
   );
 }
