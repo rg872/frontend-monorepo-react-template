@@ -5,7 +5,7 @@ module.exports = withNx({
   nx: {
     // Set this to false if you do not want to use SVGR
     // See: https://github.com/gregberge/svgr
-    svgr: true
+    svgr: true,
   },
   webpack: (config) => {
     return {
@@ -14,15 +14,15 @@ module.exports = withNx({
         ...(config.resolve || {}),
         alias: {
           ...(config.resolve.alias || {}),
-          'react-native$': 'react-native-web'
+          'react-native$': 'react-native-web',
         },
         extensions: [
           '.web.js',
           '.web.ts',
           '.web.tsx',
-          ...(config.resolve.extensions || {})
-        ]
-      }
+          ...(config.resolve.extensions || []),
+        ],
+      },
     };
-  }
+  },
 });
