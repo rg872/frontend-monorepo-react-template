@@ -45,12 +45,12 @@
     "desktop-electron": {
       "tags": []
     },
-    "components": {
-      "tags": []
-    },
     "components-e2e": {
       "tags": [],
-      "implicitDependencies": ["components"]
+      "implicitDependencies": ["shared-components"]
+    },
+    "shared-components": {
+      "tags": []
     }
   }
 }

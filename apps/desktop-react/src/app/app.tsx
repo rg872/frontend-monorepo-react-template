@@ -1,4 +1,4 @@
-import { ButtonTest } from '@frontend-monorepo-react/components';
+import { ButtonTest } from '@frontend-monorepo-react/shared/components';
 
 export function App() {
   return (

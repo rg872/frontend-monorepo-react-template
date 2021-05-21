@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import { ButtonTest } from '@frontend-monorepo-react/components';
+import { ButtonTest } from '@frontend-monorepo-react/shared/components';
 
 const App = () => {
   return (

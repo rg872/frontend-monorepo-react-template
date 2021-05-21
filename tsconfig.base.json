@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@frontend-monorepo-react/components": ["libs/components/src/index.ts"]
+      "@frontend-monorepo-react/shared/components": [
+        "libs/shared/components/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
