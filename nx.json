@@ -26,31 +26,31 @@
   },
   "projects": {
     "web-next": {
-      "tags": []
+      "tags": ["scope:web"]
     },
     "web-next-e2e": {
-      "tags": [],
+      "tags": ["scope:web"],
       "implicitDependencies": ["web-next"]
     },
     "desktop-react": {
-      "tags": []
+      "tags": ["scope:desktop"]
     },
     "desktop-react-e2e": {
-      "tags": [],
+      "tags": ["scope:desktop"],
       "implicitDependencies": ["desktop-react"]
     },
     "phone-react-native": {
-      "tags": []
+      "tags": ["scope:phone"]
     },
     "desktop-electron": {
-      "tags": []
+      "tags": ["scope:desktop"]
     },
     "components-e2e": {
-      "tags": [],
+      "tags": ["scope:shared"],
       "implicitDependencies": ["shared-components"]
     },
     "shared-components": {
-      "tags": []
+      "tags": ["scope:shared"]
     }
   }
 }
