@@ -5,7 +5,7 @@ import React from 'react';
 import { ButtonTest } from '@frontend-monorepo-react/components';
 
 export function Index() {
-  return <ButtonTest />;
+  return <ButtonTest title={'click me please'} />;
 }
 
 export default Index;

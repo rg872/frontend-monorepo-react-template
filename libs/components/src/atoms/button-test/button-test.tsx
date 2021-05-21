@@ -1,6 +1,5 @@
 import React from 'react';
-//import './button-test.module.css';
-import { Button, View } from 'react-native';
+import { Button, View, StyleSheet } from 'react-native';
 
 /* eslint-disable-next-line */
 export interface ButtonTestProps {
@@ -9,10 +8,18 @@ export interface ButtonTestProps {
 
 export function ButtonTest(props: ButtonTestProps) {
   return (
-    <View>
+    <View style={styles.container}>
       <Button title={props.title} onPress={() => {}} />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    padding: '20px',
+    backgroundColor: 'pink',
+  },
+});
 
 export default ButtonTest;

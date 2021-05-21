@@ -3,7 +3,7 @@ import { ButtonTest } from '@frontend-monorepo-react/components';
 export function App() {
   return (
     <>
-      <ButtonTest />
+      <ButtonTest title="click me" />
     </>
   );
 }

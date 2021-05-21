@@ -7,7 +7,7 @@ const App = () => {
   return (
     <>
       <View>
-        <ButtonTest />
+        <ButtonTest title="click me" />
       </View>
     </>
   );
